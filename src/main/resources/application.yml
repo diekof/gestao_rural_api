@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gestao-rural-api
+  profiles:
+    default: dev
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET:ZmFrZS1zZWNyZXQtdXNlLWVudi12YXItaW4tcHJvZA==}
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-days: 7
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
