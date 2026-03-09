@@ -1,0 +1,22 @@
+CREATE TABLE farms (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id UUID NOT NULL,
+    nome VARCHAR(150) NOT NULL,
+    proprietario VARCHAR(150),
+    area_total_hectares NUMERIC(12,2) NOT NULL,
+    cidade VARCHAR(120),
+    estado VARCHAR(2),
+    latitude NUMERIC(9,6),
+    longitude NUMERIC(9,6),
+    observacoes TEXT,
+    status VARCHAR(20) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL,
+    created_by VARCHAR(100) NOT NULL,
+    updated_by VARCHAR(100) NOT NULL,
+    CONSTRAINT fk_farms_tenant FOREIGN KEY (tenant_id) REFERENCES tenants(id),
+    CONSTRAINT ck_farms_area_total_positive CHECK (area_total_hectares > 0),
+    CONSTRAINT ck_farms_latitude CHECK (latitude IS NULL OR (latitude >= -90 AND latitude <= 90)),
+    CONSTRAINT ck_farms_longitude CHECK (longitude IS NULL OR (longitude >= -180 AND longitude <= 180)),
+    CONSTRAINT ck_farms_estado_length CHECK (estado IS NULL OR LENGTH(estado) = 2)
+);
