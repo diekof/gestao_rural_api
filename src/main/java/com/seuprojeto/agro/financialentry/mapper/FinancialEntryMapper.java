@@ -4,6 +4,8 @@ import com.seuprojeto.agro.financialentry.domain.FinancialEntry;
 import com.seuprojeto.agro.financialentry.dto.FinancialEntryCreateRequest;
 import com.seuprojeto.agro.financialentry.dto.FinancialEntryResponse;
 import com.seuprojeto.agro.financialentry.dto.FinancialEntryUpdateRequest;
+import java.time.Instant;
+import java.time.OffsetDateTime;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -43,7 +45,11 @@ public class FinancialEntryMapper {
     public FinancialEntryResponse toResponse(FinancialEntry entry) {
         return new FinancialEntryResponse(entry.getId(), entry.getTenantId(), entry.getSeasonId(), entry.getOperationId(), entry.getTipo(),
                 entry.getCategoria(), entry.getStatus(), entry.getDataLancamento(), entry.getDataVencimento(), entry.getDataPagamento(),
-                entry.getValor(), entry.getDescricao(), entry.getDocumento(), entry.getCreatedAt(), entry.getUpdatedAt(),
+                entry.getValor(), entry.getDescricao(), entry.getDocumento(), toInstant(entry.getCreatedAt()), toInstant(entry.getUpdatedAt()),
                 entry.getCreatedBy(), entry.getUpdatedBy());
+    }
+
+    private Instant toInstant(OffsetDateTime source) {
+        return source != null ? source.toInstant() : null;
     }
 }

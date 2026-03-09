@@ -4,6 +4,8 @@ import com.seuprojeto.agro.agriculturaloperation.domain.AgriculturalOperation;
 import com.seuprojeto.agro.agriculturaloperation.dto.AgriculturalOperationCreateRequest;
 import com.seuprojeto.agro.agriculturaloperation.dto.AgriculturalOperationResponse;
 import com.seuprojeto.agro.agriculturaloperation.dto.AgriculturalOperationUpdateRequest;
+import java.time.Instant;
+import java.time.OffsetDateTime;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -38,6 +40,10 @@ public class AgriculturalOperationMapper {
     public AgriculturalOperationResponse toResponse(AgriculturalOperation op) {
         return new AgriculturalOperationResponse(op.getId(), op.getTenantId(), op.getSeasonId(), op.getFieldId(), op.getTipo(), op.getStatus(),
                 op.getDataOperacao(), op.getAreaExecutada(), op.getCustoEstimado(), op.getCustoReal(), op.getDescricao(),
-                op.getCreatedAt(), op.getUpdatedAt(), op.getCreatedBy(), op.getUpdatedBy());
+                toInstant(op.getCreatedAt()), toInstant(op.getUpdatedAt()), op.getCreatedBy(), op.getUpdatedBy());
+    }
+
+    private Instant toInstant(OffsetDateTime source) {
+        return source != null ? source.toInstant() : null;
     }
 }

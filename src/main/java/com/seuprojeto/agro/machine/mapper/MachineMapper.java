@@ -4,6 +4,8 @@ import com.seuprojeto.agro.machine.domain.Machine;
 import com.seuprojeto.agro.machine.dto.MachineCreateRequest;
 import com.seuprojeto.agro.machine.dto.MachineResponse;
 import com.seuprojeto.agro.machine.dto.MachineUpdateRequest;
+import java.time.Instant;
+import java.time.OffsetDateTime;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -38,6 +40,10 @@ public class MachineMapper {
     public MachineResponse toResponse(Machine m) {
         return new MachineResponse(m.getId(), m.getTenantId(), m.getCodigo(), m.getNome(), m.getTipo(), m.getFabricante(),
                 m.getModelo(), m.getAnoFabricacao(), m.getStatus(), m.getHorimetroAtual(), m.getObservacoes(),
-                m.getCreatedAt(), m.getUpdatedAt(), m.getCreatedBy(), m.getUpdatedBy());
+                toInstant(m.getCreatedAt()), toInstant(m.getUpdatedAt()), m.getCreatedBy(), m.getUpdatedBy());
+    }
+
+    private Instant toInstant(OffsetDateTime source) {
+        return source != null ? source.toInstant() : null;
     }
 }
