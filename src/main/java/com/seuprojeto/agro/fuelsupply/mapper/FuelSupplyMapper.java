@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.mapper;
+package com.seuprojeto.agro.fuelsupply.mapper;
 
 import com.seuprojeto.agro.fuelsupply.domain.FuelSupply;
 import com.seuprojeto.agro.fuelsupply.dto.FuelSupplyCreateRequest;

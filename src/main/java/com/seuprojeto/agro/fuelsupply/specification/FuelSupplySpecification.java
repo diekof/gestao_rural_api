@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.specification;
+package com.seuprojeto.agro.fuelsupply.specification;
 
 import com.seuprojeto.agro.fuelsupply.domain.FuelSupply;
 import java.time.OffsetDateTime;

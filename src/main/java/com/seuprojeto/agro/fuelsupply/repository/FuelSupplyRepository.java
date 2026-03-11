@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.repository;
+package com.seuprojeto.agro.fuelsupply.repository;
 
 import com.seuprojeto.agro.fuelsupply.domain.FuelSupply;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.service;
+package com.seuprojeto.agro.fuelsupply.service;
 
 import com.seuprojeto.agro.exception.ConflictException;
 import com.seuprojeto.agro.exception.ForbiddenException;
@@ -51,9 +51,10 @@ public class FuelSupplyService {
     @Transactional
     public FuelSupplyResponse create(FuelSupplyCreateRequest request, UUID tenantIdRequest) {
         AuthenticatedUser current = getCurrentUser();
-        UUID tenantId = resolveTenantId(current, tenantIdRequest);
         UUID workerId = resolveWorkerId(current, request.userId());
-        User worker = userRepository.findById(workerId).orElseThrow(() -> new NotFoundException("User not found"));
+        User worker =
+                userRepository.findById(workerId).orElseThrow(() -> new NotFoundException("User not found"));
+        UUID tenantId = resolveTenantId(current, tenantIdRequest, worker);
         validateUserTenant(worker, tenantId);
         Machine machine = resolveMachine(request.machineId(), tenantId);
         FuelCredit credit = creditRepository.findByTenantIdAndUserId(tenantId, workerId)
@@ -190,12 +191,15 @@ public class FuelSupplyService {
         return entity;
     }
 
-    private UUID resolveTenantId(AuthenticatedUser current, UUID tenantIdRequest) {
+    private UUID resolveTenantId(AuthenticatedUser current, UUID tenantIdRequest, User worker) {
         if (current.isSuperAdmin()) {
-            if (tenantIdRequest == null) {
-                throw new ForbiddenException("tenantId is required for SUPER_ADMIN");
+            if (tenantIdRequest != null) {
+                return tenantIdRequest;
             }
-            return tenantIdRequest;
+            if (worker != null && worker.getTenantId() != null) {
+                return worker.getTenantId();
+            }
+            throw new ForbiddenException("tenantId is required for SUPER_ADMIN");
         }
         return TenantContext.getTenantId();
     }

@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.domain;
+package com.seuprojeto.agro.fuelsupply.domain;
 
 import com.seuprojeto.agro.audit.AuditableEntity;
 import jakarta.persistence.*;

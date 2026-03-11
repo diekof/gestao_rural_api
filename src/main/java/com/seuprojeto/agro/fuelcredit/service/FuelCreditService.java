@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.service;
+package com.seuprojeto.agro.fuelcredit.service;
 
 import com.seuprojeto.agro.exception.ConflictException;
 import com.seuprojeto.agro.exception.ForbiddenException;

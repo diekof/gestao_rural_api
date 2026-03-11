@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.repository;
+package com.seuprojeto.agro.fuelcredit.repository;
 
 import com.seuprojeto.agro.fuelcredit.domain.FuelCredit;
 import java.util.Optional;

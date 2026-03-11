@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.dto;
+package com.seuprojeto.agro.fuelsupply.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;

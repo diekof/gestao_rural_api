@@ -25,7 +25,7 @@ public class MachineController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('TENANT_ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER')")
     public ResponseEntity<MachineResponse> create(@RequestParam(required = false) UUID tenantId,
                                                   @Valid @RequestBody MachineCreateRequest request) {
         return ResponseEntity.ok(service.create(request, tenantId));
@@ -47,13 +47,13 @@ public class MachineController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('TENANT_ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER')")
     public ResponseEntity<MachineResponse> update(@PathVariable UUID id, @Valid @RequestBody MachineUpdateRequest request) {
         return ResponseEntity.ok(service.update(id, request));
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('TENANT_ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER')")
     public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.delete(id);
         return ResponseEntity.noContent().build();

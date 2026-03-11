@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.controller;
+package com.seuprojeto.agro.fuelcredit.controller;
 
 import com.seuprojeto.agro.fuelcredit.domain.FuelCreditStatus;
 import com.seuprojeto.agro.fuelcredit.dto.FuelCreditCreateRequest;

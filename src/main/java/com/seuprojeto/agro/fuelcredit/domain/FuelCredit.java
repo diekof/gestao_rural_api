@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.domain;
+package com.seuprojeto.agro.fuelcredit.domain;
 
 import com.seuprojeto.agro.audit.AuditableEntity;
 import com.seuprojeto.agro.user.domain.User;
@@ -19,7 +19,7 @@ public class FuelCredit extends AuditableEntity {
     @Column(nullable = false)
     private UUID tenantId;
 
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private UUID userId;
 
     @Column(nullable = false, precision = 14, scale = 2)

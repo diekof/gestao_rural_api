@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.dto;
+package com.seuprojeto.agro.fuelcredit.dto;
 
 import com.seuprojeto.agro.fuelcredit.domain.FuelCreditStatus;
 import jakarta.validation.constraints.DecimalMin;

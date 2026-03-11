@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.mapper;
+package com.seuprojeto.agro.fuelcredit.mapper;
 
 import com.seuprojeto.agro.fuelcredit.domain.FuelCredit;
 import com.seuprojeto.agro.fuelcredit.domain.FuelCreditStatus;

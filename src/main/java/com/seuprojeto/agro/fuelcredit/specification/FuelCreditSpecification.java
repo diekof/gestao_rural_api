@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelcredit.specification;
+package com.seuprojeto.agro.fuelcredit.specification;
 
 import com.seuprojeto.agro.fuelcredit.domain.FuelCredit;
 import com.seuprojeto.agro.fuelcredit.domain.FuelCreditStatus;

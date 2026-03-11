@@ -1,4 +1,4 @@
-﻿package com.seuprojeto.agro.fuelsupply.dto;
+package com.seuprojeto.agro.fuelsupply.dto;
 
 import java.math.BigDecimal;
 import java.time.Instant;
