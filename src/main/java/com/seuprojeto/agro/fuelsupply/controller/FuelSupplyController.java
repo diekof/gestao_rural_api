@@ -34,7 +34,7 @@ public class FuelSupplyController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER','OPERATOR')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER')")
     public ResponseEntity<FuelSupplyResponse> create(
             @RequestParam(required = false) UUID tenantId,
             @Valid @RequestBody FuelSupplyCreateRequest request) {
@@ -42,13 +42,13 @@ public class FuelSupplyController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER','OPERATOR')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER','OPERATOR','VIEWER')")
     public ResponseEntity<FuelSupplyResponse> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER','OPERATOR')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER','OPERATOR','VIEWER')")
     public ResponseEntity<Page<FuelSupplyResponse>> list(
             @RequestParam(required = false) UUID userId,
             @RequestParam(required = false) UUID machineId,
@@ -75,3 +75,4 @@ public class FuelSupplyController {
         return ResponseEntity.noContent().build();
     }
 }
+

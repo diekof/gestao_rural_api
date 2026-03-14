@@ -24,7 +24,7 @@ public class FuelCreditController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('TENANT_ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER')")
     public ResponseEntity<FuelCreditResponse> create(@RequestParam(required = false) UUID tenantId,
                                                      @Valid @RequestBody FuelCreditCreateRequest request) {
         return ResponseEntity.ok(service.create(request, tenantId));
@@ -45,7 +45,7 @@ public class FuelCreditController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('TENANT_ADMIN','MANAGER')")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN','TENANT_ADMIN','MANAGER')")
     public ResponseEntity<FuelCreditResponse> update(@PathVariable UUID id,
                                                      @Valid @RequestBody FuelCreditUpdateRequest request) {
         return ResponseEntity.ok(service.update(id, request));
